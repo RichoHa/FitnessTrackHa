@@ -14,11 +14,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useNewUrlParser: true,
-});
+mongoose.connect(
+    process.env.MONGODB_URI || 'mongodb://localhost/workout',
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        useFindAndModify: false
+    }
+);
+
 
 app.use(routes);
 

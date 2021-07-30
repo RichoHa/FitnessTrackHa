@@ -1,7 +1,5 @@
 # FitnessTrackHa
 
-
-
 ## Summary
 
 A fitness tracker which uses Express Server and MongoDB.
@@ -15,7 +13,6 @@ The data which it keeps track of is the workout:
 
 This application categories cardio and weight exercise.
 
-
 ## Table of Contents
 - [Screeny](#Screeny)
 - [Links](#Links)
@@ -27,7 +24,7 @@ This application categories cardio and weight exercise.
 
 ## Links
 Deployed Link:
-
+https://git.heroku.com/fitnesstrackha.git
 
 Github link:
 https://github.com/RichoHa/fitnessTrackHa
