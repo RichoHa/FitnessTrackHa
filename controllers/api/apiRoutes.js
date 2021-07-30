@@ -1,12 +1,12 @@
 const router = require('express').Router();
 
 // bring in Workout model
-const Workout = require('../../models/Workout');
+const db = require('../../models');
 
 //GET Routes: /api/workouts
-router.get('/workouts', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
-        const workouts = await Workout.find({});
+        const workouts = await db.Workout.find({});
         res.send(workouts);
     } catch (error) {
         console.error(error);
@@ -15,9 +15,9 @@ router.get('/workouts', async (req, res) => {
 });
 
 //POST Routes: /api/workouts
-router.post('/workouts', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
-        const addedWorkout = await Workout.create(req.body);
+        const addedWorkout = await db.Workout.create(req.body);
         res.json(addedWorkout);
     } catch (error) {
         console.error(error);
@@ -26,10 +26,10 @@ router.post('/workouts', async (req, res) => {
 });
 
 //PUT/UPDATE Routes: /api/workouts/id
-router.put('/workouts/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
     const id = req.params.id;
     try {
-        const updatedWorkout = await Workout.findByIdAndUpdate(
+        const updatedWorkout = await db.Workout.findByIdAndUpdate(
             id,
             {
                 $push: { exercises: req.body },
@@ -46,23 +46,18 @@ router.put('/workouts/:id', async (req, res) => {
 });
 
 //GET Routes: /api/workouts/range
-router.get("/api/workouts/range", async (req, res) => {
+router.get("/range", async (req, res) => {
     try {
         const workouts = await db.Workout.aggregate([
             {
                 $addFields: {
                     totalDuration: {
                         $sum: '$exercises.duration'
-                    },
-                    totalWeight: {
-                        $sum: '$exercises.weight'
                     }
                 },
             },
         ])
-            .limit(7)
-            .sort({ _id: "descending" })
-        res.json(workouts);
+        res.status(200).json(workouts);
     } catch (err) {
         console.log(err);
         response.status(500).send(err.message);
