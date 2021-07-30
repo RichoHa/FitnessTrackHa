@@ -60,7 +60,8 @@ router.get("/api/workouts/range", async (req, res) => {
                 },
             },
         ])
-            .limit(7);
+            .limit(7)
+            .sort({ _id: "descending" })
         res.json(workouts);
     } catch (err) {
         console.log(err);
