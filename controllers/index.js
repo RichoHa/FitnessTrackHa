@@ -5,14 +5,14 @@ const apiRoutes = require('./api');
 router.use('/api', apiRoutes);
 // exercise page routing
 
-router.get('/', async (req, res) => {
-    try {
-        res.sendFile(path.join(__dirname, '../public/index.html'));
-    } catch (error) {
-        console.error(error);
-        res.status(500);
-    }
-});
+// router.get('/', async (req, res) => {
+//     try {
+//         res.sendFile(path.join(__dirname, '../public/index.html'));
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500);
+//     }
+// });
 
 router.get('/exercise', async (req, res) => {
     try {
