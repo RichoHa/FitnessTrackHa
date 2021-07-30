@@ -25,9 +25,11 @@ This application categories cardio and weight exercise.
 ## Links
 Deployed Link:
 https://git.heroku.com/fitnesstrackha.git
+(Can't seem to find problem)
 
 Github link:
 https://github.com/RichoHa/fitnessTrackHa
+(please deploy locally - install npm modules, seed, mongod, npm run watch)
 
 
 ## Author
